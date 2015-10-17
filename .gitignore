@@ -21,3 +21,5 @@
 
 # CarrierWave images
 public/uploads
+
+spec/examples.txt
