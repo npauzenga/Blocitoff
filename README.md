@@ -1,9 +1,8 @@
-<!--
-[![Build Status](https://travis-ci.org/npauzenga/Bloccit.svg)][travis]
-[![Coverage Status](https://coveralls.io/repos/npauzenga/Bloccit/badge.svg?branch=master&service=github)][coveralls]
+[![Build Status](https://travis-ci.org/npauzenga/Blocitoff.svg)][travis]
+[![Coverage Status](https://coveralls.io/repos/npauzenga/Blocitoff/badge.svg?branch=master&service=github)][coveralls]
 
-[travis]: https://travis-ci.org/npauzenga/Bloccit
-[coveralls]: https://coveralls.io/github/npauzenga/Bloccit?branch=master -->
+[travis]: https://travis-ci.org/npauzenga/Bloccitoff
+[coveralls]: https://coveralls.io/github/npauzenga/Blocitoff?branch=master
 
 ## [Bloccitoff](#): A self-destructing TO-DO list app with rake automation
 
