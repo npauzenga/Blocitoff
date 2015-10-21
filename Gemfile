@@ -8,15 +8,21 @@ gem "jquery-rails"
 gem "turbolinks"
 gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
-gem "faker"
 gem "figaro", "1.0"
-gem "pry-rails"
 
 group :development, :test do
+  gem "faker"
+  gem "pry-rails"
   # Call "byebug" anywhere in the code to stop execution and get a debugger
   gem "byebug"
+  gem "pry-byebug"
   gem "rspec-rails", "~> 3.0"
   gem "capybara"
+  gem "guard"
+  gem "guard-rubocop"
+  gem "guard-rspec"
+  gem "rubocop"
+  gem "rubocop-rspec"
 end
 
 group :development do
@@ -24,9 +30,6 @@ group :development do
   gem "web-console", "~> 2.0"
   # Spring speeds up development by keeping your application running
   gem "spring"
-  gem "guard"
-  gem "guard-rubocop"
-  gem "rubocop-rspec"
   gem "binding_of_caller"
   gem "better_errors"
   gem "sqlite3"
