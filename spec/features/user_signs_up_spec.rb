@@ -8,14 +8,14 @@ feature "User signs up" do
     end
     fill_in "Name", with: "Ted Danson"
     fill_in "Password", with: "helloworld"
+    fill_in "Confirmation", with: "helloworld"
     fill_in "Email", with: "tdanson@remembercheers.com"
 
     within "form" do
       click_button "Sign Up"
     end
     expect(current_path).to eq sign_in_path
-    expect(page).to
-    have_content("Thanks! Please check your email to complete sign up")
+    expect(page).to have_content("Thanks! Please check your email to complete sign up")
     # expect confirmation email to send
   end
 

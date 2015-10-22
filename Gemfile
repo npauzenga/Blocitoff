@@ -11,6 +11,7 @@ gem "sdoc", "~> 0.4.0", group: :doc
 gem "figaro", "1.0"
 gem "puma"
 gem "bootstrap-sass"
+gem "bcrypt-ruby", require: "bcrypt"
 
 group :development, :test do
   gem "faker"
