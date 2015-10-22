@@ -13,6 +13,10 @@ gem "puma"
 gem "bootstrap-sass"
 gem "bcrypt-ruby", require: "bcrypt"
 
+group :test do
+  gem "factory_girl_rails", "~> 4.0"
+end
+
 group :development, :test do
   gem "faker"
   gem "pry-rails"

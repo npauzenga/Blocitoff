@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to sign_in_path, notice: "Thanks! Please check your email to complete sign up"
+      redirect_to sign_in_path,
+      notice: "Thanks! Please check your email to complete sign up"
     else
       render "new"
     end
