@@ -24,6 +24,8 @@ group :development, :test do
   gem "guard-rspec"
   gem "rubocop"
   gem "rubocop-rspec"
+  gem "coveralls"
+  gem "simplecov"
 end
 
 group :development do
