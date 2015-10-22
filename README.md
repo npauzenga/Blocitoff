@@ -3,12 +3,12 @@
 [![Code Climate](https://codeclimate.com/github/npauzenga/Blocitoff/badges/gpa.svg)](code_climate)
 
 [code_climate]: https://codeclimate.com/github/npauzenga/Blocitoff
-[travis]: https://travis-ci.org/npauzenga/Bloccitoff
+[travis]: https://travis-ci.org/npauzenga/Blocitoff
 [coveralls]: https://coveralls.io/github/npauzenga/Blocitoff?branch=master
 
-## [Bloccitoff](https://blocitoff-nate.herokuapp.com/): A self-destructing TO-DO list app with rake automation
+## [Blocitoff](https://blocitoff-nate.herokuapp.com/): A self-destructing TO-DO list app with rake automation
 
 
-### [Trello board (To-Do list for the To-Do app)](https://trello.com/b/clxYgXRO/bloccitoff-app)
+### [Trello board (To-Do list for the To-Do app)](https://trello.com/b/clxYgXRO/blocitoff-app)
 
 Made with my mentor at [Bloc](http://bloc.io) as part of the Rails Development Track.
