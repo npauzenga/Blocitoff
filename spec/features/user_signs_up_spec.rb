@@ -19,3 +19,9 @@ feature "User signs up" do
       .to have_content("Thanks! Please check your email to complete sign up")
   end
 end
+
+feature "User confirms account" do
+  scenario "Successfully" do
+    #TODO
+  end
+end
