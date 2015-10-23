@@ -19,9 +19,10 @@
 
 # Ignore application configuration
 /config/application.yml
-/config/secrets.yml
 
 # CarrierWave images
 public/uploads
 
 spec/examples.txt
+
+/coverage
