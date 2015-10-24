@@ -15,6 +15,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def confirm_email
     user = User.find_by_confirm_token(params[:id])
     if user
