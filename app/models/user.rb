@@ -48,8 +48,6 @@ class User < ActiveRecord::Base
   end
 
   def confirmation_token
-    if self.confirm_token.blank?
-      self.confirm_token = new_token
-    end
+    self.confirm_token = new_token if self.confirm_token.blank?
   end
 end
