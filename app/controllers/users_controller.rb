@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(params[:id])
   end
 
   def confirm_email

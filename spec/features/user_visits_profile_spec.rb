@@ -1,9 +1,9 @@
 require "rails_helper"
 
-feature "User signs in" do
+feature "User visits profile" do
   let(:user) { create(:user, email_confirmed: true) }
 
-  scenario "Successfully" do
+  before do
     visit root_path
     within ".nav" do
       click_link "Sign In"
@@ -14,8 +14,10 @@ feature "User signs in" do
     within "form" do
       click_button "Sign In"
     end
+  end
 
-    expect(current_path).to eq user_path(user)
+  scenario "Visiting root redirects to profile" do
+    visit root_path
     expect(page).to have_content(user.name)
   end
 end
