@@ -12,6 +12,11 @@ gem "figaro", "1.0"
 gem "puma"
 gem "bootstrap-sass"
 
+group :test do
+  gem "coveralls"
+  gem "simplecov"
+end
+
 group :development, :test do
   gem "faker"
   gem "pry-rails"
@@ -25,8 +30,6 @@ group :development, :test do
   gem "guard-rspec"
   gem "rubocop"
   gem "rubocop-rspec"
-  gem "coveralls"
-  gem "simplecov"
 end
 
 group :development do
