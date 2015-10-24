@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/npauzenga/Blocitoff.svg)][travis]
+[![Build Status](https://travis-ci.org/npauzenga/Blocitoff.svg?branch=master)][travis]
 [![Coverage Status](https://coveralls.io/repos/npauzenga/Blocitoff/badge.svg?branch=master&service=github)][coveralls]
 [![Code Climate](https://codeclimate.com/github/npauzenga/Blocitoff/badges/gpa.svg)][code_climate]
 
