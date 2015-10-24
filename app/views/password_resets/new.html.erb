@@ -1,2 +1,7 @@
-<h1>PasswordResets#new</h1>
-<p>Find me in app/views/password_resets/new.html.erb</p>
+<h1>Forgot Your Password?</h1>
+<%= form_for(:password_reset, url: password_resets_path) do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email, class: "form-control" %>
+
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
