@@ -23,7 +23,7 @@ class PasswordResetsController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      log_in @user 
+      log_in @user
       flash[:success] = "Password has been reset"
       redirect_to @user
     else
@@ -39,7 +39,7 @@ class PasswordResetsController < ApplicationController
 
   def get_user
     @user = User.find_by(email: params[:email])
-    redirect_to root_url if @user == nil
+    redirect_to root_url if @user.nil?
   end
 
   def check_expiration
