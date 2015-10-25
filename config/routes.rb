@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :todos, only: [:create]
   end
 
+  resources :todos, only: [:destroy]
+
   resources :users, except: [:new] do
     member do
       get :confirm_email
