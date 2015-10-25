@@ -22,6 +22,6 @@ end
 
 feature "User confirms account" do
   scenario "Successfully" do
-    #TODO
+    # TODO
   end
 end

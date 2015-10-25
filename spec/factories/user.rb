@@ -5,15 +5,14 @@ FactoryGirl.define do
     password "helloworld"
     password_confirmation "helloworld"
     email_confirmed true
-    confirm_token nil
+    after(:create) { |user| user.confirm_token = nil }
   end
 
-  factory :unconfirmed_user do
-    name "Thomas Jefferson"
-    sequence(:email, 500) { |n| "user#{n}@example.com" }
+  factory :unconfirmed_user, class: User do
+    name "Abraham Lincoln"
+    sequence(:email, 200) { |n| "user#{n}@example.com" }
     password "helloworld"
     password_confirmation "helloworld"
     email_confirmed false
-    confirm_token nil
   end
 end
