@@ -10,7 +10,7 @@ class TodosController < ApplicationController
       redirect_to @user, notice: "Your new TODO was saved"
     else
       flash[:error] = "Your TODO was not saved"
-      render :new
+      redirect_to @user
     end
   end
 
