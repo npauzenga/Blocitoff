@@ -15,11 +15,11 @@ class TodosController < ApplicationController
   end
 
   def show
-    @todo = Todo.find params[:id]
+    @todo = Todo.find(params[:id])
   end
 
   def destroy
-    @todo = Todo.find_by(params[:id])
+    @todo = Todo.find(params[:id])
 
     if @todo.destroy
       flash[:notice] = "Todo completed!"
