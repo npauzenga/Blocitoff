@@ -2,7 +2,7 @@
   <div class="error"><%= flash[:error] %></div>
 <% end %>
 
-<%= form_for Todo.new do |form| %>
+<%= form_for [user, todo] do |form| %>
   <%= form.text_field :description, placeholder: "Description" %>
   <%= form.submit "Save" %>
 <% end %>

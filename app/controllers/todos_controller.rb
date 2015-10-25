@@ -3,10 +3,11 @@ class TodosController < ApplicationController
   end
 
   def create
+    @user = User.find_by(params[:user_id])
     @todo = Todo.new(todo_params)
 
     if @todo.save
-      redirect_to @todo, notice: "Your new TODO was saved"
+      redirect_to @user, notice: "Your new TODO was saved"
     else
       flash[:error] = "Your TODO was not saved"
       render :new
