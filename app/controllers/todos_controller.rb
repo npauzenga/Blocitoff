@@ -19,12 +19,11 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    @todo = Todo.find_by
-    @user = @todo.user
+    @todo = Todo.find_by(params[:id])
 
     if @todo.destroy
       flash[:notice] = "Todo completed!"
-      redirect_to @user
+      redirect_to root_path
     else
       flash[:error] = "There was a problem"
     end
