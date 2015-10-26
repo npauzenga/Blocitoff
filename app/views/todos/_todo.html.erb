@@ -1,1 +1,8 @@
-<p><%= link_to "", todo, method: :delete, class: "glyphicon glyphicon-ok" %> <%= todo.description %></p>
+<%= content_tag :div, class: "media", id: "todo-#{todo.id}" do %>
+  <div class="todos">
+    <%= link_to "", todo, method: :delete,
+                          remote: true,
+                          class:  "glyphicon glyphicon-ok" %>
+    <%= todo.description %>
+  </div>
+<% end %>

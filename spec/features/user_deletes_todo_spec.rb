@@ -17,5 +17,7 @@ feature "User deletes todo" do
     fill_in "Description", with: "Meet up with the team"
     click_button "Save"
     click_link ""
+
+    expect(page).not_to have_content("Meetup with the team")
   end
 end

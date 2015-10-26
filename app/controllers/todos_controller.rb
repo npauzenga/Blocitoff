@@ -20,12 +20,17 @@ class TodosController < ApplicationController
 
   def destroy
     @todo = Todo.find(params[:id])
+    @user = @todo.user
 
     if @todo.destroy
       flash[:notice] = "Todo completed!"
-      redirect_to root_path
     else
       flash[:error] = "There was a problem"
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
     end
   end
 
