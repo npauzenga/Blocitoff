@@ -25,4 +25,5 @@ public/uploads
 
 spec/examples.txt
 
+# Coverall's coverage reports
 /coverage

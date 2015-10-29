@@ -11,6 +11,11 @@ gem "sdoc", "~> 0.4.0", group: :doc
 gem "figaro", "1.0"
 gem "puma"
 gem "bootstrap-sass"
+gem "bcrypt"
+
+group :test do
+  gem "factory_girl_rails", "~> 4.0"
+end
 
 group :test do
   gem "coveralls"
