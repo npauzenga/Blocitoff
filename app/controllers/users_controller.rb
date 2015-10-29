@@ -15,17 +15,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def confirm_email
-    user = User.find_by_confirm_token(params[:id])
-    if user
-      user.email_activate
-      flash[:success] = "Welcome to Blocitoff!"
-    else
-      flash[:error] = "Sorry, user does not exist"
-      redirect_to root
-    end
-  end
-
   private
 
   def user_params
