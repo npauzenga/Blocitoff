@@ -17,6 +17,11 @@ group :test do
   gem "factory_girl_rails", "~> 4.0"
 end
 
+group :test do
+  gem "coveralls"
+  gem "simplecov"
+end
+
 group :development, :test do
   gem "faker"
   gem "pry-rails"
@@ -30,8 +35,6 @@ group :development, :test do
   gem "guard-rspec"
   gem "rubocop"
   gem "rubocop-rspec"
-  gem "coveralls"
-  gem "simplecov"
 end
 
 group :development do
