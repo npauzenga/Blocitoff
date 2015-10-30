@@ -17,6 +17,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(params[:id])
+    @todos = @user.todos
+    @todo = Todo.new
   end
 
   def confirm_email

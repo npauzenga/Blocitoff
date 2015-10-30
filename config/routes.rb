@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   post   "sign_in"   => "sessions#create"
   delete "sign_out"  => "sessions#destroy"
 
-  resources :todos, only: [:new, :create, :show]
+  resources :users do
+    resources :todos, only: [:create]
+  end
+
+  resources :todos, only: [:destroy]
+
   resources :users, except: [:new] do
     member do
       get :confirm_email
