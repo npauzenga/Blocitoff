@@ -14,7 +14,8 @@ gem "bootstrap-sass"
 gem "bcrypt"
 
 group :test do
-  gem "factory_girl_rails", "~> 4.0"
+  gem "coveralls"
+  gem "simplecov"
 end
 
 group :test do
@@ -35,6 +36,7 @@ group :development, :test do
   gem "guard-rspec"
   gem "rubocop"
   gem "rubocop-rspec"
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do

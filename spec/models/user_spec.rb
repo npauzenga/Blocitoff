@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  let(:user) { create(:user) }
   let(:user_static_email) { create(:user, email: "test@test.com") }
   let(:user_invalid_email) { build(:user, email: "xxx") }
 
@@ -12,7 +11,7 @@ RSpec.describe User, type: :model do
 
     it "rejects a duplicate email address" do
       user_static_email
-      build(:user, email: "test@test.com").should_not be_valid
+      expect(build(:user, email: "test@test.com")).to_not be_valid
     end
   end
 end
