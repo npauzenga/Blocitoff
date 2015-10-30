@@ -15,7 +15,23 @@ class TodosController < ApplicationController
   end
 
   def show
-    @todo = Todo.find params[:id]
+    @todo = Todo.find(params[:id])
+  end
+
+  def destroy
+    @todo = Todo.find(params[:id])
+    @user = @todo.user
+
+    if @todo.destroy
+      flash[:notice] = "Todo completed!"
+    else
+      flash[:error] = "There was a problem"
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
   end
 
   private

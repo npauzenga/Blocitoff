@@ -12,13 +12,15 @@ gem "figaro", "1.0"
 gem "puma"
 gem "bootstrap-sass"
 gem "bcrypt-ruby", require: "bcrypt"
+gem "responders", "~>2.0"
 
 group :test do
   gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development, :test do
-  gem "faker"
+  gem "faker", git:    "https://github.com/npauzenga/faker.git",
+               branch: "adding-hipster"
   gem "pry-rails"
   # Call "byebug" anywhere in the code to stop execution and get a debugger
   gem "byebug"
