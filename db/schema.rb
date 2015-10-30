@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022205638) do
+ActiveRecord::Schema.define(version: 20151024160305) do
 
   create_table "todos", force: :cascade do |t|
     t.string   "description"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20151022205638) do
     t.datetime "updated_at",                      null: false
     t.boolean  "email_confirmed", default: false
     t.string   "confirm_token"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
 end
