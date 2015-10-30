@@ -1,8 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Sign In", sign_in_path %></li>
-      <li><%= link_to "Sign Up", sign_up_path %></li>
+      <% if logged_in? %>
+        <li><%= link_to "Sign Out", sign_out_path, method: "delete" %></li>
+      <% else %>
+        <li><%= link_to "Sign In", sign_in_path %></li>
+        <li><%= link_to "Sign Up", sign_up_path %></li>
+      <% end %>
     </ul>
   </div>
 </nav>
