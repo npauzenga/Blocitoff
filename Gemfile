@@ -12,6 +12,7 @@ gem "figaro", "1.0"
 gem "puma"
 gem "bootstrap-sass"
 gem "bcrypt-ruby", require: "bcrypt"
+gem "responders", "~>2.0"
 
 group :test do
   gem "factory_girl_rails", "~> 4.0"

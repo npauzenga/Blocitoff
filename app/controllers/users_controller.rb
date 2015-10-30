@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(params[:id])
-    @todos = Todo.where(params[:user_id])
+    @todos = @user.todos
     @todo = Todo.new
   end
 

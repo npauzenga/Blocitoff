@@ -4,7 +4,7 @@ class TodosController < ApplicationController
 
   def create
     @user = User.find_by(params[:user_id])
-    @todo = Todo.new(todo_params)
+    @todo = @user.todos.new(todo_params)
 
     if @todo.save
       redirect_to @user, notice: "Your new TODO was saved"
@@ -15,7 +15,23 @@ class TodosController < ApplicationController
   end
 
   def show
-    @todo = Todo.find params[:id]
+    @todo = Todo.find(params[:id])
+  end
+
+  def destroy
+    @todo = Todo.find(params[:id])
+    @user = @todo.user
+
+    if @todo.destroy
+      flash[:notice] = "Todo completed!"
+    else
+      flash[:error] = "There was a problem"
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
   end
 
   private
