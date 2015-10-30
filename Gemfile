@@ -19,16 +19,10 @@ group :test do
   gem "simplecov"
 end
 
-group :test do
-  gem "coveralls"
-  gem "simplecov"
-end
-
 group :development, :test do
   gem "faker", git:    "https://github.com/npauzenga/faker.git",
                branch: "adding-hipster"
   gem "pry-rails"
-  # Call "byebug" anywhere in the code to stop execution and get a debugger
   gem "byebug"
   gem "pry-byebug"
   gem "rspec-rails", "~> 3.0"
