@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.registration_confirmation(@user).deliver
+      UserMailer.registration_confirmation(@user).deliver_now
       flash[:notice] = "Thanks! Please check your email to complete sign up"
       redirect_to sign_in_path
     else

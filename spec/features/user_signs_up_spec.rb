@@ -17,10 +17,11 @@ feature "User signs up" do
     expect(current_path).to eq sign_in_path
     expect(page)
       .to have_content("Thanks! Please check your email to complete sign up")
-    # expect confirmation email to send
   end
+end
 
-  xscenario "and confirms account via email link" do
-    # ???
+feature "User confirms account" do
+  scenario "Successfully" do
+    # TODO
   end
 end
