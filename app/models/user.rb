@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
   end
 
   def authenticate(password)
-    password_input = BCrypt::Engine.hash_secret(password, self.password_salt)
-    password_input == self.password_hash
+    password_input = BCrypt::Engine.hash_secret(password, password_salt)
+    password_input == password_hash
   end
 
   def create_reset_digest
@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   end
 
   def confirmation_token
-    return unless self.confirm_token.blank?
+    return unless confirm_token.blank?
     self.confirm_token = SecureRandom.urlsafe_base64.to_s
   end
 end
