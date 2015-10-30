@@ -1,0 +1,9 @@
+<%= content_tag :div, class: "media", id: "todo-#{todo.id}" do %>
+  <div class="todos">
+    <%= link_to "", todo, method: :delete,
+                          remote: true,
+                          class:  "glyphicon glyphicon-ok" %>
+    <%= todo.description %>
+    (<%= todo.days_left %> days left)
+  </div>
+<% end %>

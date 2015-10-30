@@ -1,14 +1,17 @@
 class User < ActiveRecord::Base
   attr_accessor :password, :reset_token
+
+  has_many :todos
+
   before_save :encrypt_password
   before_create :confirmation_token
 
   validates :password, confirmation: true
   validates :password, :email, presence: true
+  validates :email, uniqueness: true
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
   }
-  validates :email, uniqueness: true
 
   def encrypt_password
     return unless password.present?
