@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 feature "User creates a todo" do
   let(:user) { create(:user, email_confirmed: true) }
