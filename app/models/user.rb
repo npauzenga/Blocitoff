@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   def create_reset_digest
     self.reset_token = User.new_token
     self.reset_token_salt = BCrypt::Engine.generate_salt
-    update_attribute(:reset_digest, User.digest(reset_token, self.reset_token_salt))
+    update_attribute(:reset_digest, User.digest(reset_token, reset_token_salt))
     update_attribute(:reset_sent_at, Time.zone.now)
   end
 
