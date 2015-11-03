@@ -2,12 +2,19 @@ language: ruby
 sudo: false
 cache: bundler
 rvm:
-  - 2.1
-  - 2.2
-  - ruby-head
+- 2.1
+- 2.2
+- ruby-head
 install:
-  - bundle install --retry=3
+- bundle install --retry=3
 matrix:
   fast_finish: true
   allow_failures:
-    - rvm: ruby-head
+  - rvm: ruby-head
+deploy:
+  provider: heroku
+  api_key:
+    secure: Jy+hEatGZUQ+z0z6N15zBUpw+7fknA8gNN7m8K5oRWcqXLADu+/mh2wDRyONWkE6XnW5j5H3/iwr8aPHx9bIQbM7j42HECl4S5t6TXWkeZteSynHMXe+C/BGl7bBKNxpME4Rk1MkN4Q+UTe/n+z6Y6l65NGqJavtS83XabjsdZJ6OnS8uytwdvHPqi+NvGoIp6XVJhGyWNNFmIE2qfG66MvQ2wGV0Eg9NRfF8DGL1zxp7py6gjn2RWRkX6z74iTvRtk5J3LsoyS2rtPFFWJYH8lxIyqw69twHaPC14/VQClEiH7wilUKoTbgMeefPKWUF8LR41d7x9RvOxW7vtbErJituup7g0LdTKY8yCWE/Kx6ZmJnq0brp+3hyNLJ94t7dPYohHX7FytXCHLZV2m8YXZS7xwoGBBU81HQyCpw4DlPixqEEB8SZ3lF8wKfG0yha9r9+KxUip2XvUPbrGVYoohybJaB4iGV0+aOeJQkB96wfdyGlRzyKO1PSsbwKqFv0994Tze1+bEv5MkXEzGEYalX/Z4undBIcTSzdc8p9DOCa9eJ55vf/Ev/eIa7Q3BWCLoa0gdq7PokjCt3gGg9CsWaHfYd4WnDooyuEPdOlf88EpsZRLElY9LL25oFlnjZO8FsxuKHU5xCZS3JXcxDz2WCOpC8x39DWyTTQzqOobM=
+  app:
+    master: blocitoff-nate
+    staging: blocitoff-nate-staging
