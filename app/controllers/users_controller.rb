@@ -4,9 +4,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      UserMailer.registration_confirmation(@user).deliver_now
+    result = CreateUser.call(user_params: user_params)
+
+    if result.success?
+      UserMailer.registration_confirmation(result.user).deliver_now
       flash[:notice] = "Thanks! Please check your email to complete sign up"
       redirect_to sign_in_path
     else
@@ -16,9 +17,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(params[:id])
-    @todos = @user.todos
-    @todo = Todo.new
+    result = ShowUser.call(id: params[:id])
+    @user = result.user
+    @todos = result.todos
+    @todo = result.todo
   end
 
   private
