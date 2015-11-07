@@ -3,7 +3,8 @@ class TodosController < ApplicationController
   end
 
   def create
-    result = CreateTodo.call(user_id: params[:user_id], todo_params: todo_params)
+    result = CreateTodo.call(user_id:     params[:user_id],
+                             todo_params: todo_params)
 
     if result.success?
       redirect_to result.user, notice: "Your new TODO was saved"
@@ -18,17 +19,16 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    @todo = Todo.find(params[:id])
-    @user = @todo.user
+    result = DestroyTodo.call(todo_id: params[:id])
 
-    if @todo.destroy
+    if result.success?
       flash[:notice] = "Todo completed!"
     else
       flash[:error] = "There was a problem"
     end
 
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to result.user }
       format.js
     end
   end
