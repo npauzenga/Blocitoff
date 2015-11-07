@@ -3,16 +3,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:session][:email].downcase)
-    if @user && @user.authenticate(params[:session][:password])
-      log_in @user
-      redirect_to @user
+    user_session = CreateUserSession.call(email:    params[:session][:email],
+                                          password: params[:session][:password],
+                                          session:  session)
+
+    if user_session.success?
+      redirect_to user_session.user
     else
       flash.now[:error] = "There was a problem signing in"
       render "new"
     end
   end
 
+  # implement interactor
   def destroy
     log_out
     redirect_to root_url

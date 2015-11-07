@@ -13,6 +13,7 @@ gem "puma"
 gem "bootstrap-sass"
 gem "bcrypt"
 gem "responders", "~>2.0"
+gem "interactor"
 
 group :test do
   gem "coveralls"

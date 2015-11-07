@@ -2,6 +2,6 @@
   <h1><%= @user.name %></h1>
   <h3><%= @user.email %></h3>
   <p>Test subject since <%= @user.created_at.strftime("%B %d, %Y") %></p>
-  <%= render @todos %>
-  <%= render partial: "todos/form", locals: { user: @user, todo: @todo } %>
+  <%= render @user.todos %>
+  <%= render partial: "todos/form", locals: { user: @user, todo: @user.todos.new } %>
 </div>
