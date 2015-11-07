@@ -6,7 +6,6 @@ class UserConfirmationController < ApplicationController
     confirmed = ConfirmUserEmail.call(id: params[:id])
 
     if confirmed.success?
-      confirmed.user.email_activate
       flash[:success] = "Welcome to Blocitoff!"
     else
       flash[:error] = "Sorry, user does not exist"
