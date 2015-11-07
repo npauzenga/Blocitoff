@@ -1,5 +1,6 @@
 class UpdatePassword
   include Interactor
+
   def call
     errors = context.user.errors
     user = context.user
