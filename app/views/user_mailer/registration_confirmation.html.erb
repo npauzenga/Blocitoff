@@ -1,4 +1,4 @@
 <h1>Hiya <%= @user.name %></h1>,
 
 <p>Thanks for registering! To confirm your account, please click the link below.</p>
-<%= submit_confirmation_url(@user.confirm_token) %>
+<%= link_to "Confirm my account", submit_confirmation_url(@user.confirm_token) %>
