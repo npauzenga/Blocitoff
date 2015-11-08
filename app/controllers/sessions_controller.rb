@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       log_in @user
       redirect_to @user
     else
-      flash.now[:error] = "There was a problem signing in"
+      flash[:error] = "There was a problem signing in"
       render "new"
     end
   end
