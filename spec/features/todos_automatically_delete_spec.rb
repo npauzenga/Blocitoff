@@ -1,19 +1,14 @@
 # require "rails_helper"
-# require "rake"
 #
 # feature "Todos are automatically purged" do
 #   include TestFactories
 #
-#   rake = Rake.application
-#   rake.init
-#   rake.load_rakefile
-#
 #   let(:todo) { valid_todo }
-#
+#   # set whenever to work in test
 #   scenario "Successfully after 7 days" do
 #     old_todo = todo
 #     old_todo.update_attribute(:created_at, (Time.now.utc - 7.days))
-#     rake["todo:delete_items"].invoke
+#     Time.now.change(hour: 0)
 #     expect(Todo.find_by(id: old_todo.id)).to be nil
 #   end
 # end
