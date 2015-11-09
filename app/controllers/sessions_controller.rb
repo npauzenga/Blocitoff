@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < AuthenticatedController
   def new
   end
 
@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
                                    password: params[:session][:password])
 
     if valid_user.success?
-      log_in valid_user.user
       redirect_to valid_user.user
     else
       flash.now[:error] = "There was a problem signing in"

@@ -1,6 +1,7 @@
-class PasswordResetsController < ApplicationController
-  before_action :find_user,        only: %i(edit update)
-  before_action :check_expiration, only: %i(edit update)
+class PasswordResetsController < AuthenticatedController
+  before_action      :find_user,        only: %i(edit update)
+  before_action      :check_expiration, only: %i(edit update)
+  skip_before_action :log_in,           only: %i(new edit create)
 
   def new
   end
@@ -25,7 +26,6 @@ class PasswordResetsController < ApplicationController
     update_password = UpdatePassword.call(user_params: user_params, user: @user)
 
     if update_password.success?
-      log_in update_password.user
       flash[:success] = "Password has been reset"
       redirect_to update_password.user
     else

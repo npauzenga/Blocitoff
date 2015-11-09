@@ -16,10 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    result = ShowUser.call(id: params[:id])
-    @user = result.user
-    @todos = result.todos
-    @todo = result.todo
+    @user = FindUser.call(id: params[:id], current_id: session[:user_id]).user
   end
 
   private

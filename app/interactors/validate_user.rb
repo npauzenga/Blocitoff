@@ -3,9 +3,11 @@ class ValidateUser
 
   def call
     context.user = User.find_by(email: context.email.downcase)
-    user = context.user
-    password = context.password
-    errors = context.user.errors
-    context.fail!(errors: errors) unless user && user.authenticate(password)
+    authenticate_user(context.user, context.password)
+  end
+  
+  def authenticate_user(user, password)
+    return if user && user.authenticate(password)
+    context.fail!(errors: user.errors)
   end
 end
