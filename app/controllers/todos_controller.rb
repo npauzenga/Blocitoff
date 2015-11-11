@@ -7,7 +7,8 @@ class TodosController < ApplicationController
     @todo = @user.todos.new(todo_params)
 
     if @todo.save
-      redirect_to @user, notice: "Your new TODO was saved"
+      redirect_to @user
+      flash[:notice] = "Your new TODO was saved"
     else
       flash[:error] = "Your TODO was not saved"
       redirect_to @user
