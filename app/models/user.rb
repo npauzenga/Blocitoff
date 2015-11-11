@@ -19,11 +19,13 @@ class User < ActiveRecord::Base
     self.password_salt = BCrypt::Engine.generate_salt
     self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
   end
+
   # move to Encryptor
   def authenticate(password)
     password_input = BCrypt::Engine.hash_secret(password, password_salt)
     password_input == password_hash
   end
+
   # move to Encryptor
   def create_reset_digest
     self.reset_token = User.new_token
@@ -39,8 +41,7 @@ class User < ActiveRecord::Base
   end
 
   def send_password_reset_email
-    # don't need to include token because the view is accessing via @user.reset_token??
-    UserMailer.password_reset(context.user, context.token).deliver_now
+    UserMailer.password_reset(self).deliver_now
   end
 
   def password_reset_expired?
@@ -48,16 +49,19 @@ class User < ActiveRecord::Base
   end
 
   private
+
   # move to Encryptor
   def self.digest(string)
     salt = BCrypt::Engine.generate_salt
     BCrypt::Engine.hash_secret(string, salt)
   end
-# move to Encryptor
+
+  # move to Encryptor
   def self.new_token
     SecureRandom.urlsafe_base64.to_s
   end
-# move to Encryptor
+
+  # move to Encryptor
   def confirmation_token
     return unless confirm_token.blank?
     self.confirm_token = SecureRandom.urlsafe_base64.to_s
