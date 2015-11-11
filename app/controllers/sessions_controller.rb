@@ -1,19 +1,21 @@
-class SessionsController < AuthenticatedController
+class SessionsController < ApplicationController
   def new
   end
 
   def create
-    valid_user = ValidateUser.call(email:    params[:session][:email],
-                                   password: params[:session][:password])
+    user_session = CreateUserSession.call(email:    params[:session][:email],
+                                          password: params[:session][:password],
+                                          session:  session)
 
-    if valid_user.success?
-      redirect_to valid_user.user
+    if user_session.success?
+      redirect_to user_session.user
     else
       flash.now[:error] = "There was a problem signing in"
       render "new"
     end
   end
 
+  # implement interactor
   def destroy
     log_out
     redirect_to root_url

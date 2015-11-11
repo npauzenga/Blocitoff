@@ -1,4 +1,4 @@
-class TodosController < ApplicationController
+class TodosController < AuthenticatedController
   def new
   end
 

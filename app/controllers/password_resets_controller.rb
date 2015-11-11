@@ -1,7 +1,6 @@
-class PasswordResetsController < AuthenticatedController
+class PasswordResetsController < ApplicationController
   before_action      :find_user,        only: %i(edit update)
   before_action      :check_expiration, only: %i(edit update)
-  skip_before_action :log_in,           only: %i(new edit create)
 
   def new
   end
@@ -10,8 +9,7 @@ class PasswordResetsController < AuthenticatedController
   end
 
   def create
-    result =
-      RequestPasswordResetToken.call(email: params[:password_reset][:email])
+    result = RequestPasswordResetToken.call(email: password_params)
 
     if result.success?
       flash[:notice] = "Email sent with reset instructions"
@@ -23,7 +21,8 @@ class PasswordResetsController < AuthenticatedController
   end
 
   def update
-    update_password = UpdatePassword.call(user_params: user_params, user: @user)
+    result = ResetPassword.call(user_params: user_params, user: @user,
+                                session: session)
 
     if update_password.success?
       flash[:success] = "Password has been reset"
@@ -39,6 +38,11 @@ class PasswordResetsController < AuthenticatedController
     params.require(:user).permit(:password, :password_confirmation)
   end
 
+  def password_params
+    params.require(:password_reset).require(:email)
+  end
+
+  # move these to interactors via an organizer
   def find_user
     @user = User.find_by(email: params[:email])
     redirect_to root_url if @user.nil?
