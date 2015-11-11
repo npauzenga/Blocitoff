@@ -15,7 +15,7 @@ class TodosController < AuthenticatedController
   end
 
   def show
-    @todo = Todo.find(params[:id])
+    @todo = ShowTodo.call(id: params[:id]).todo
   end
 
   def destroy
