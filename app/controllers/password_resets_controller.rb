@@ -1,5 +1,6 @@
 class PasswordResetsController < ApplicationController
   before_action :find_user,        only: [:edit, :update]
+  before_action :find_token,       only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
 
   def new
@@ -35,6 +36,12 @@ class PasswordResetsController < ApplicationController
 
   def user_params
     params.require(:user).permit(:password, :password_confirmation)
+  end
+
+  def find_token
+    @user = User.find_by(email: params[:email])
+    hashed_token = User.digest(params[:id], @user.reset_token_salt)
+    redirect_to root_url if hashed_token != @user.reset_digest
   end
 
   def find_user
