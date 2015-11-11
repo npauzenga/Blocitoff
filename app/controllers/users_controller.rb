@@ -1,5 +1,5 @@
 class UsersController < AuthenticatedController
-  skip_before_action :log_in_required,  only: %i(new create)
+  skip_before_action :log_in_required, only: %i(new create)
 
   def new
     @user = User.new
@@ -18,7 +18,7 @@ class UsersController < AuthenticatedController
   end
 
   def show
-    @user = FindUser.call(id: params[:id], current_id: session[:user_id]).user
+    @user = ShowUser.call(id: params[:id], current_id: session[:user_id]).user
   end
 
   private

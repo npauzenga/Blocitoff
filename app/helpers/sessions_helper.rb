@@ -1,5 +1,4 @@
 module SessionsHelper
-
   def log_in_required
     redirect_to sign_in_path unless current_user
   end
