@@ -52,8 +52,7 @@ class User < ActiveRecord::Base
   private
 
   # move to Encryptor
-  def self.digest(string)
-    salt = BCrypt::Engine.generate_salt
+  def self.digest(string, salt)
     BCrypt::Engine.hash_secret(string, salt)
   end
 

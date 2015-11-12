@@ -1,5 +1,5 @@
 class VerifyPasswordResetUser
   include Interactor::Organizer
 
-  organize FindPasswordResetUser, CheckPasswordResetExpiration
+  organize FindPasswordResetToken, CheckPasswordResetExpiration
 end

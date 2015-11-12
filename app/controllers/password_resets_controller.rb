@@ -37,19 +37,13 @@ class PasswordResetsController < ApplicationController
     params.require(:user).permit(:password, :password_confirmation)
   end
 
-  # TODO this must be moved into interactor after find_user
-  def find_token
-    @user = User.find_by(email: params[:email])
-    hashed_token = User.digest(params[:id], @user.reset_token_salt)
-    redirect_to root_url if hashed_token != @user.reset_digest
-  end
-
   def password_params
     params.require(:password_reset).require(:email)
   end
 
   def verify_password_reset_user
     @user = VerifyPasswordResetUser.call(
-      user: User.find_by(email: params[:email])).user
+      user: User.find_by(email: params[:email]),
+      id: params[:id]).user
   end
 end
