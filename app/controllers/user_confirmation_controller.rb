@@ -3,9 +3,9 @@ class UserConfirmationController < ApplicationController
   end
 
   def update
-    user = User.find_by_confirm_token(params[:id])
-    if user
-      user.email_activate
+    confirmed = ConfirmUserEmail.call(id: params[:id])
+
+    if confirmed.success?
       flash[:success] = "Welcome to Blocitoff!"
     else
       flash[:error] = "Sorry, user does not exist"
