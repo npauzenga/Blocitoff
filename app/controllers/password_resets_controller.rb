@@ -21,7 +21,8 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    password_reset = ResetPassword.call(user_params: user_params, user: @user,
+    password_reset = ResetPassword.call(user_params: user_params,
+                                        user: @user,
                                         session: session)
 
     if password_reset.success?
