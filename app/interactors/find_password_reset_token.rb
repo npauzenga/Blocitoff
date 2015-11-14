@@ -2,20 +2,17 @@ class FindPasswordResetToken
   include Interactor
 
   def call
-    if user_nil? || password_reset_expired? || id_digest != context.user.reset_digest
-      context.fail!(errors: context.user.errors)
-    end
+    context.fail!(errors: context.user.errors) unless
+      user_nil? || incorrect_token?
   end
+
+  private
 
   def user_nil?
     context.user.nil?
   end
 
-  def password_reset_expired?
-    context.user.reset_sent_at > 2.hours.ago
-  end
-
-  def id_digest
-    Encryptor.digest_token(context.id)
+  def incorrect_token?
+    Encryptor.digest_token(context.id) != context.user.reset_digest
   end
 end

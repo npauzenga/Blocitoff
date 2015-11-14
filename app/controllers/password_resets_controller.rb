@@ -22,8 +22,8 @@ class PasswordResetsController < ApplicationController
 
   def update
     password_reset = ResetPassword.call(user_params: user_params,
-                                        user: @user,
-                                        session: session)
+                                        user:        @user,
+                                        session:     session)
 
     if password_reset.success?
       flash[:success] = "Password has been reset"
@@ -46,6 +46,6 @@ class PasswordResetsController < ApplicationController
   def verify_password_reset_user
     @user = VerifyPasswordResetUser.call(
       user: User.find_by(email: params[:email]),
-      id: params[:id]).user
+      id:   params[:id]).user
   end
 end
