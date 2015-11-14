@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :password, :reset_token
+  attr_accessor :password, :reset_token, :confirm_token
 
   has_many :todos
 

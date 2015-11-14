@@ -2,6 +2,8 @@ class CreateConfirmationToken
   include Interactor
 
   def call
-    context.user.confirm_token = SecureRandom.urlsafe_base64.to_s
+    context.enc, context.raw = Encryptor.generate_token
+    context.user.confirm_token = context.raw
+    context.user.update_attribute(:confirm_digest, context.enc)
   end
 end
