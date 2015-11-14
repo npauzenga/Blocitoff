@@ -6,14 +6,14 @@ class UsersController < AuthenticatedController
   end
 
   def create
-    result = CreateUser.call(user_params: user_params)
+    result = CreateUser.call(user: @user, user_params: user_params)
 
     if result.success?
       flash[:notice] = "Thanks! Please check your email to complete sign up"
       redirect_to sign_in_path
     else
       flash[:error] = "Uh oh. Something went wrong."
-      render "new"
+      redirect_to sign_up_path
     end
   end
 

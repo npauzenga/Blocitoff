@@ -6,4 +6,12 @@ class ConfirmUserEmail
     context.fail! unless context.user
     context.user.email_activate
   end
+
+  private
+
+  def email_activate
+    context.user.email_confirmed = true
+    context.user.confirm_token = nil
+    save!(validate: false)
+  end
 end

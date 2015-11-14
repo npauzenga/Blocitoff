@@ -7,7 +7,7 @@ class AuthenticateUser
   end
 
   def authenticate_user(user, password)
-    return if user && user.authenticate(password)
+    return if user && Encryptor.passwords_match?(password, user.password_salt, user.password_hash)
     context.fail!(errors: user.errors)
   end
 end

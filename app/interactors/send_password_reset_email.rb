@@ -2,6 +2,6 @@ class SendPasswordResetEmail
   include Interactor
 
   def call
-    context.user.send_password_reset_email
+    UserMailer.password_reset(context.user).deliver_now
   end
 end
