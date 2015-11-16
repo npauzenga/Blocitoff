@@ -6,7 +6,7 @@ class UsersController < AuthenticatedController
   end
 
   def create
-    result = CreateUser.call(user: @user, user_params: user_params)
+    result = CreateUser.call(user_params: user_params)
 
     if result.success?
       flash[:notice] = "Thanks! Please check your email to complete sign up"
