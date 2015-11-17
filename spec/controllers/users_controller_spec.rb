@@ -8,10 +8,10 @@ RSpec.describe UsersController, type: :controller do
 
     let(:interactor_input) do
       { user_params: {
-          name: user.name,
-          email: user.email,
-          password: user.password,
-          password_confirmation: user.password_confirmation
+        name:                  user.name,
+        email:                 user.email,
+        password:              user.password,
+        password_confirmation: user.password_confirmation
         }
       }
     end
@@ -19,7 +19,6 @@ RSpec.describe UsersController, type: :controller do
     let(:interactor_context) do
       Interactor::Context.new(errors: :val, user: user)
     end
-
 
     before(:example) do
       allow(CreateUser).to receive(:call).with(interactor_input)
