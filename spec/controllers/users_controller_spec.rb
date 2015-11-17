@@ -20,6 +20,7 @@ RSpec.describe UsersController, type: :controller do
       Interactor::Context.new(errors: :val, user: user)
     end
 
+
     before(:example) do
       allow(CreateUser).to receive(:call).with(interactor_input)
         .and_return(interactor_context)
@@ -31,35 +32,35 @@ RSpec.describe UsersController, type: :controller do
         post :create, params
       end
 
-    #   # 200 because we're redirecting to sign_in?
-    #   it "returns http status 200" do
-    #     expect(response).to have_http_status(200)
-    #     post :create, interactor_input
-    #   end
-    #
-    #   it "renders view sessions#new" do
-    #     expect(post :create, interactor_input).to redirect_to(sign_in_path)
-    #   end
+      it "returns http status 302" do
+        post :create, params
+        expect(response).to have_http_status(302)
+      end
+
+      it "renders view sessions#new" do
+        expect(post :create, params).to redirect_to(sign_in_path)
+      end
     end
-    #
-    # # it'll still call CreateUser.call but this has been tested?
-    # context "when email is not provided" do
-    #   it "redirects to sign_up" do
-    #     interactor_input[:user][:email] = nil
-    #     expect(post :create, interactor_input).to redirect_to(sign_up_path)
-    #   end
-    # end
-    #
-    # context "when password is not provided" do
-    #   it "redirects to sign_up" do
-    #   end
-    # end
-    #
-    # context "when password confirmation is not provided" do
-    #   it "redirects to sign_up" do
-    #   end
-    # end
 
+    context "when email is not provided" do
+      it "redirects to sign_up" do
+        interactor_input[:user_params][:email] = ""
+        expect(post :create, params).to redirect_to(sign_up_path)
+      end
+    end
 
+    context "when password is not provided" do
+      it "redirects to sign_up" do
+        interactor_input[:user_params][:password] = ""
+        expect(post :create, params).to redirect_to(sign_up_path)
+      end
+    end
+
+    context "when password confirmation is not provided" do
+      it "redirects to sign_up" do
+        interactor_input[:user_params][:password_confirmation] = ""
+        expect(post :create, params).to redirect_to(sign_up_path)
+      end
+    end
   end
 end
