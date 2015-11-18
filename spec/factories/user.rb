@@ -14,5 +14,15 @@ FactoryGirl.define do
     password "helloworld"
     password_confirmation "helloworld"
     email_confirmed false
+
+    after(:create) do |user|
+      user.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+    after(:create) do |user|
+      user.confirm_digest = Encryptor.digest_token(user.confirm_token)
+    end
+    after(:create) do |user|
+      EncryptPassword.call(user: user)
+    end
   end
 end
