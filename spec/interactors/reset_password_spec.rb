@@ -5,10 +5,6 @@ RSpec.describe ResetPassword do
 
   let(:user) { create(:unconfirmed_user) }
 
-  let(:interactor_context) do
-    Interactor::Context.new(errors: :val, user: user)
-  end
-
   let(:update_password) { double("update_password") }
   let(:login_user) { double("login_user") }
 
@@ -27,12 +23,12 @@ RSpec.describe ResetPassword do
   describe ".call" do
     it "calls the UpdatePassword interactor" do
       expect(update_password).to receive(:run!)
-      subject.call(interactor_context)
+      subject.call
     end
 
     it "calls the LoginUser interactor" do
       expect(login_user).to receive(:run!)
-      subject.call(interactor_context)
+      subject.call
     end
   end
 end

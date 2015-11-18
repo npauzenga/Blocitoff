@@ -5,10 +5,6 @@ RSpec.describe VerifyPasswordResetUser do
 
   let(:user) { create(:unconfirmed_user) }
 
-  let(:interactor_context) do
-    Interactor::Context.new(errors: :val, user: user)
-  end
-
   let(:find_password_reset_token) { double("find_password_reset_token") }
 
   let(:check_password_reset_expiration) do
@@ -32,12 +28,12 @@ RSpec.describe VerifyPasswordResetUser do
   describe ".call" do
     it "calls the FindPasswordResetToken interactor" do
       expect(find_password_reset_token).to receive(:run!)
-      subject.call(interactor_context)
+      subject.call
     end
 
     it "calls the CheckPasswordResetExpiration interactor" do
       expect(check_password_reset_expiration).to receive(:run!)
-      subject.call(interactor_context)
+      subject.call
     end
   end
 end

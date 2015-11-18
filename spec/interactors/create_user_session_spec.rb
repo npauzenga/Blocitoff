@@ -5,10 +5,6 @@ RSpec.describe CreateUserSession do
 
   let(:user) { create(:unconfirmed_user) }
 
-  let(:interactor_context) do
-    Interactor::Context.new(errors: :val, user: user)
-  end
-
   let(:authenticate_user) { double("authenticate_user") }
   let(:login_user) { double("login_user") }
 
@@ -27,12 +23,12 @@ RSpec.describe CreateUserSession do
   describe ".call" do
     it "calls the AuthenticateUser interactor" do
       expect(authenticate_user).to receive(:run!)
-      subject.call(interactor_context)
+      subject.call
     end
 
     it "calls the LoginUser interactor" do
       expect(login_user).to receive(:run!)
-      subject.call(interactor_context)
+      subject.call
     end
   end
 end
