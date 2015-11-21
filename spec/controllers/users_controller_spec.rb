@@ -30,8 +30,7 @@ RSpec.describe UsersController, type: :controller do
         name:                  user.name,
         email:                 user.email,
         password:              user.password,
-        password_confirmation: user.password_confirmation
-        }
+        password_confirmation: user.password_confirmation }
       }
     end
 
@@ -61,8 +60,9 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context "when invalid invalid params are passed" do
-      before(:example) { allow(interactor_context).
-        to receive(:success?) { false } }
+      before(:example) do
+        allow(interactor_context).to receive(:success?) { false }
+      end
 
       it "redirects to sign up" do
         expect(post :create, params).to redirect_to(sign_up_path)
@@ -72,44 +72,52 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #show" do
     let(:confirmed_user_1) { create(:confirmed_user) }
-    let(:current_user) { create(:confirmed_user) }
-    let(:unconfirmed_user) { create(:unconfirmed_user) }
+    let(:current_user)     { create(:confirmed_user) }
+    let(:params)           { { id: confirmed_user_1.id } }
+    let(:session)          { { user_id: current_user.id } }
 
-    let(:params) { { id: confirmed_user_1.id } }
-    let(:arguments) { { id:         confirmed_user_1.id,
-                        current_id: current_user.id } }
-
-    let(:interactor_context) do
-      Interactor::Context.new(errors: :val, user: confirmed_user_1)
+    let(:arguments) do
+      { id:         params.fetch(:id).to_s,
+        current_id: session.fetch(:user_id) }
     end
+
+    let(:context) { double(:context, success?: true, user: confirmed_user_1) }
 
     before(:example) do
       allow(ShowUser).to receive(:call).with(arguments)
-        .and_return(interactor_context)
+        .and_return(context)
     end
+
     context "when user logged in" do
       it "calls the ShowUser interactor" do
         expect(ShowUser).to receive(:call)
-        binding.pry
-        get :show, arguments
-
+        get :show, params, session
       end
 
       it "assigns valid User to @user" do
-
+        get :show, params, session
+        expect(assigns(:user)).to be(confirmed_user_1)
       end
 
-      it "renders the correct user's profile" do
-
+      it "returns http status 200" do
+        get :show, params, session
+        expect(response).to have_http_status(200)
       end
 
+      it "renders the #show view" do
+        get :show, params, session
+        expect(response).to render_template :show
+      end
     end
 
     context "when user not logged in" do
-      it "redirects to sign in" do
-
+      before do
+        session[:user_id] = nil
       end
 
+      it "redirects to sign in" do
+        expect(get :show, params, session).to redirect_to(sign_in_path)
+      end
     end
   end
 end
