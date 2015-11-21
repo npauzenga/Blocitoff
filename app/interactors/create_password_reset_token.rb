@@ -2,16 +2,19 @@ class CreatePasswordResetToken
   include Interactor
 
   def call
-    context.user = User.find_by(email: context.email.downcase)
-    context.fail!(error_msg: "Email address not found") unless context.user
+    context.user.reset_token = generate_reset_token
+    update_reset_attributes(context.enc, Time.zone.now)
+  end
 
-    # enc, raw = Encryptor.generate_token
-    #
-    # context.raw = SecureRandom.urlsafe_base64.to_s
-    #  enc = OpenSSL::HMAC.hexdigest("SHA512",
-    #                                Rails.application.secrets.secret_key_base,
-    #                                context.raw).to_s
+  private
 
-    context.user.create_reset_digest
+  def generate_reset_token
+    context.enc, context.raw = Encryptor.generate_token
+    context.raw
+  end
+
+  def update_reset_attributes(digest, time)
+    context.user.update_attribute(:reset_digest, digest)
+    context.user.update_attribute(:reset_sent_at, time)
   end
 end

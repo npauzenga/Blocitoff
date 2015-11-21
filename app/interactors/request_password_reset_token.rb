@@ -1,5 +1,7 @@
 class RequestPasswordResetToken
   include Interactor::Organizer
 
-  organize CreatePasswordResetToken, SendPasswordResetEmail
+  organize FindPasswordResetUser,
+           CreatePasswordResetToken,
+           SendPasswordResetEmail
 end

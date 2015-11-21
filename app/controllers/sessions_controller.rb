@@ -15,9 +15,12 @@ class SessionsController < ApplicationController
     end
   end
 
-  # implement interactor
   def destroy
-    log_out
-    redirect_to root_url
+    result = LogOutUser.call(session: session)
+    if result.success?
+      redirect_to root_url
+    else
+      flash[:error] = "We couldn't log you out."
+    end
   end
 end

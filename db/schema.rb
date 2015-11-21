@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101211016) do
+ActiveRecord::Schema.define(version: 20151114205353) do
 
   create_table "todos", force: :cascade do |t|
     t.string   "description"
@@ -25,13 +25,12 @@ ActiveRecord::Schema.define(version: 20151101211016) do
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.boolean  "email_confirmed",  default: false
-    t.string   "confirm_token"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "email_confirmed", default: false
+    t.string   "confirm_digest"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
-    t.string   "reset_token_salt"
   end
 
 end

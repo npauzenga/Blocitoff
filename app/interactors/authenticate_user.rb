@@ -6,8 +6,16 @@ class AuthenticateUser
     authenticate_user(context.user, context.password)
   end
 
+  private
+
   def authenticate_user(user, password)
-    return if user && user.authenticate(password)
-    context.fail!(errors: user.errors)
+    return if user && password_valid?(password) && context.user.email_confirmed
+    context.fail!(errors: "invalid Email or Password")
+  end
+
+  def password_valid?(password)
+    Encryptor.passwords_match?(password,
+                               context.user.password_salt,
+                               context.user.password_hash)
   end
 end

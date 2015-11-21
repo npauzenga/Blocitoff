@@ -13,7 +13,7 @@ class UsersController < AuthenticatedController
       redirect_to sign_in_path
     else
       flash[:error] = "Uh oh. Something went wrong."
-      render "new"
+      redirect_to sign_up_path
     end
   end
 
