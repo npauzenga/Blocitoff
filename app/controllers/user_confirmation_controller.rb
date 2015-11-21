@@ -1,6 +1,5 @@
 class UserConfirmationController < ApplicationController
   def show
-    binding.pry
     confirmed = ConfirmUserEmail.call(id: params[:id])
 
     if confirmed.success?
