@@ -28,14 +28,6 @@ admin = User.create(
   email_confirmed: true
 )
 
-nate = User.create(
-  name: "Nate",
-  email: "plabass@gmail.com",
-  password: "helloworld",
-  password_confirmation: "helloworld",
-  email_confirmed: true
-)
-
 50.times do
   Todo.create!(
     description: Faker::Hipster.sentence,
