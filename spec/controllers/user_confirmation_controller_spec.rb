@@ -8,8 +8,8 @@ RSpec.describe UserConfirmationController, type: :controller do
     let(:context)   { double(:context, success?: true) }
 
     before(:example) do
-      allow(ConfirmUserEmail).to receive(:call).with(arguments)
-        .and_return(context)
+      allow(ConfirmUserEmail).to receive(:call).with(arguments).
+        and_return(context)
     end
 
     context "when successful" do
@@ -33,8 +33,8 @@ RSpec.describe UserConfirmationController, type: :controller do
       let(:context) { double(:context, success?: false) }
 
       before(:example) do
-        allow(ConfirmUserEmail).to receive(:call)
-          .and_return(context)
+        allow(ConfirmUserEmail).to receive(:call).
+          and_return(context)
       end
 
       it "redirects to root" do
