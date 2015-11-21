@@ -3,8 +3,6 @@ require "rails_helper"
 RSpec.describe ResetPassword do
   subject { described_class }
 
-  let(:user) { create(:unconfirmed_user) }
-
   let(:update_password) { double("update_password") }
   let(:login_user) { double("login_user") }
 

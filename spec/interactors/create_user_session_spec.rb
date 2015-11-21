@@ -3,8 +3,6 @@ require "rails_helper"
 RSpec.describe CreateUserSession do
   subject { described_class }
 
-  let(:user) { create(:unconfirmed_user) }
-
   let(:authenticate_user) { double("authenticate_user") }
   let(:login_user) { double("login_user") }
 

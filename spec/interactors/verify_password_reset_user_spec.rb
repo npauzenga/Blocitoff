@@ -3,8 +3,6 @@ require "rails_helper"
 RSpec.describe VerifyPasswordResetUser do
   subject { described_class }
 
-  let(:user) { create(:unconfirmed_user) }
-
   let(:find_password_reset_token) { double("find_password_reset_token") }
 
   let(:check_password_reset_expiration) do

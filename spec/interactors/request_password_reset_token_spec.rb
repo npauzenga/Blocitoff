@@ -3,8 +3,6 @@ require "rails_helper"
 RSpec.describe RequestPasswordResetToken do
   subject { described_class }
 
-  let(:user) { create(:unconfirmed_user) }
-
   let(:find_password_reset_user) { double("find_password_reset_user") }
   let(:create_password_reset_token) { double("create_password_reset_token") }
   let(:send_password_reset_email) { double("send_password_reset_email") }
