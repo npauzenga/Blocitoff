@@ -1,39 +1,37 @@
 class TodosController < AuthenticatedController
-  def new
-  end
-
   def create
-    result = CreateTodo.call(user_id:     params[:user_id],
+    result = CreateTodo.call(user:        current_user,
                              todo_params: todo_params)
 
     if result.success?
-      redirect_to result.user, notice: "Your new TODO was saved"
-    else
-      flash[:error] = "Your TODO was not saved"
       redirect_to result.user
+      flash[:notice] = "Your new TODO was saved"
+    else
+      redirect_to result.user
+      flash[:error] = "Your TODO was not saved"
     end
   end
 
-  def show
-    @todo = ShowTodo.call(id: params[:id]).todo
-  end
-
   def destroy
-    result = DestroyTodo.call(todo_id: params[:id])
-
-    if result.success?
+    destroyed = DestroyTodo.call(todo_id: params[:id])
+    @todo = destroyed.todo
+    if destroyed.success?
       flash[:notice] = "Todo completed!"
     else
       flash[:error] = "There was a problem"
     end
 
-    respond_to do |format|
-      format.html { redirect_to result.user }
-      format.js
-    end
+    response_type
   end
 
   private
+
+  def response_type
+    respond_to do |format|
+      format.html { redirect_to @todo.user }
+      format.js
+    end
+  end
 
   def todo_params
     params.require(:todo).permit(:description)
