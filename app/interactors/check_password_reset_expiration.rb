@@ -3,7 +3,7 @@ class CheckPasswordResetExpiration
 
   def call
     return unless reset_token_expired?
-    flash[:danger] = "Password reset has expired"
+    context.fail!(errors: context.user.errors)
     redirect_to new_password_reset_url
   end
 
