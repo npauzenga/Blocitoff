@@ -39,8 +39,8 @@ RSpec.describe UsersController, type: :controller do
     end
 
     before(:example) do
-      allow(CreateUser).to receive(:call).with(interactor_input)
-        .and_return(interactor_context)
+      allow(CreateUser).to receive(:call).with(interactor_input).
+        and_return(interactor_context)
     end
 
     context "when valid params are given" do
@@ -84,8 +84,8 @@ RSpec.describe UsersController, type: :controller do
     let(:context) { double(:context, success?: true, user: confirmed_user_1) }
 
     before(:example) do
-      allow(ShowUser).to receive(:call).with(arguments)
-        .and_return(context)
+      allow(ShowUser).to receive(:call).with(arguments).
+        and_return(context)
     end
 
     context "when user logged in" do
