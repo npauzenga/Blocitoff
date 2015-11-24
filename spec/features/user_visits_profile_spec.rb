@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "User visits profile" do
-  let(:user) { create(:user, email_confirmed: true) }
+  let(:user) { create(:confirmed_user) }
 
   before do
     visit root_path
