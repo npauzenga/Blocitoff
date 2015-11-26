@@ -21,11 +21,11 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    password_reset = ResetPassword.call(user_params: user_params,
-                                        user:        @user,
-                                        session:     session)
+    password_reset = UpdatePassword.call(user_params: user_params,
+                                         user:        @user)
 
     if password_reset.success?
+      log_in(password_reset.user)
       flash[:success] = "Password has been reset"
       redirect_to password_reset.user
     else
