@@ -1,26 +1,33 @@
-require  "rails_helper"
+require "rails_helper"
 
 RSpec.describe CheckPasswordResetExpiration do
   describe ".call" do
-    let(:user_expired_token) { create(:confirmed_user,
-                                      reset_sent_at: 1.day.ago) }
+    let(:user_expired_token) do
+      create(:confirmed_user, reset_sent_at: 1.day.ago)
+    end
 
-    let(:user_valid_token)   { create(:confirmed_user,
-                                      reset_sent_at: Time.now) }
+    let(:user_valid_token) do
+      create(:confirmed_user, reset_sent_at: Time.zone.now)
+    end
 
     context "when reset has not expired" do
-      subject(:context) do
+      subject do
         described_class.call(user: user_valid_token)
       end
 
       it "succeeds" do
-        binding.pry
-        expect(context).to be_a_success
+        is_expected.to be_a_success
       end
     end
 
     context "when reset has expired" do
+      subject do
+        described_class.call(user: user_expired_token)
+      end
 
+      it "fails" do
+        is_expected.to be_a_failure
+      end
     end
   end
 end
