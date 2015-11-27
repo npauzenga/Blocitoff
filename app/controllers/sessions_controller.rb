@@ -3,23 +3,26 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user_session = CreateUserSession.call(email:    params[:session][:email],
-                                          password: params[:session][:password],
-                                          session:  session)
+    authenticated = AuthenticateUser.call(email:    params[:sign_in][:email],
+                                          password: params[:sign_in][:password])
 
-    if user_session.success?
-      redirect_to user_session.user
+    if authenticated.success?
+      log_in(authenticated.user)
+      redirect_to authenticated.user
+      flash[:notice] = "Welcome back #{authenticated.user.name}"
     else
       flash[:error] = "There was a problem signing in"
-      render "new"
+      render :new
     end
   end
 
   def destroy
     result = LogOutUser.call(session: session)
     if result.success?
-      redirect_to root_url
+      redirect_to sign_in_path
+      flash[:notice] = "You have been logged out"
     else
+      redirect_to current_user
       flash[:error] = "We couldn't log you out."
     end
   end
