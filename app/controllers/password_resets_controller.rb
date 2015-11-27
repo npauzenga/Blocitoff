@@ -8,8 +8,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    request = RequestPasswordResetToken.call(email: password_params,
-                                             id:    params[:id])
+    request = RequestPasswordResetToken.call(email: password_params)
 
     if request.success?
       flash[:notice] = "Email sent with reset instructions"
@@ -21,13 +20,11 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    password_reset = ResetPassword.call(user_params: user_params,
-                                        user:        @user,
-                                        session:     session)
+    password_reset = UpdatePassword.call(user_params: user_params, user: @user)
 
     if password_reset.success?
       flash[:success] = "Password has been reset"
-      redirect_to password_reset.user
+      redirect_to sign_in_path
     else
       render "edit"
     end
