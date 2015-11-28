@@ -42,8 +42,10 @@ class PasswordResetsController < ApplicationController
   end
 
   def verify_password_reset_user
-    @user = VerifyPasswordResetUser.call(
+    verified = VerifyPasswordResetUser.call(
       user: User.find_by(email: params[:email]),
-      id:   params[:id]).user
+      id:   params[:id])
+
+    verified.success? ? @user = verified.user : render(:new)
   end
 end
