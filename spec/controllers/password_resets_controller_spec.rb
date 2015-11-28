@@ -103,14 +103,15 @@ RSpec.describe PasswordResetsController, type: :controller do
 
     before(:example) do
       allow(VerifyPasswordResetUser).to receive(:call).with(verify_pw_input).
-        and_return(context)
+        and_return(verify_pw_context)
 
       allow(UpdatePassword).to receive(:call).with(reset_pw_input).
-        and_return(context)
+        and_return(update_pw_context)
     end
 
     context "when successful" do
-      let(:context) { double(:context, success?: true, user: user) }
+      let(:verify_pw_context) { double(:context, success?: true, user: user) }
+      let(:update_pw_context) { double(:context, success?: true, user: user) }
 
       it "calls the ResetPassword interactor" do
         expect(UpdatePassword).to receive(:call)
@@ -128,7 +129,8 @@ RSpec.describe PasswordResetsController, type: :controller do
     end
 
     context "when unsuccessful" do
-      let(:context) { double(:context, success?: false, user: user) }
+      let(:verify_pw_context) { double(:context, success?: true, user: user) }
+      let(:update_pw_context) { double(:context, success?: false, user: user) }
 
       it "renders the #edit template" do
         expect(patch :update, params).to render_template(:edit)
