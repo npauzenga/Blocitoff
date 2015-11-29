@@ -26,10 +26,7 @@ RSpec.describe UpdatePassword do
       end
 
       it "updates password_salt" do
-        orig_salt = user.password_salt
-        described_class.call(user_params: user_params, user: user)
-        new_salt = user.password_salt
-        expect(orig_salt).not_to eq(new_salt)
+        expect { subject }.to change { user.password_salt }
       end
 
       it "sets reset_digest to nil" do
