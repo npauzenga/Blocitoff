@@ -22,12 +22,7 @@ RSpec.describe User do
   context "validations" do
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_confirmation_of(:password) }
-
-    it "validates the uniqueness of an email address" do
-      original = user_static_email
-      duplicate = build(:unconfirmed_user, email: original.email)
-      expect(duplicate.valid?).to be false
-    end
+    it { is_expected.to validate_uniqueness_of(:email) }
 
     it "validates the format of an email address" do
       expect(user_invalid_email.valid?).to be false
