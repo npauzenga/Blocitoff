@@ -1,10 +1,6 @@
 require "rails_helper"
 
 RSpec.describe User do
-  let(:user_static_email) do
-    create(:confirmed_user, email: "test@test.com")
-  end
-
   let(:user_unconfirmed_valid)  { create(:unconfirmed_user) }
   let(:user_invalid_email)      { build(:unconfirmed_user, email: "xxx") }
 
