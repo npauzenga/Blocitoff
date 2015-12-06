@@ -2,6 +2,7 @@ class CreatePasswordResetToken
   include Interactor
 
   def call
+    context.fail! unless context.user
     context.user.reset_token = generate_reset_token
     update_reset_attributes(context.enc, Time.zone.now)
   end
