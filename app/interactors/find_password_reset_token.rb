@@ -2,9 +2,7 @@ class FindPasswordResetToken
   include Interactor
 
   def call
-    # context.fail! if user_nil? || incorrect_token?
-    context.fail!(errors: context.user.errors) unless
-      user_nil? || incorrect_token?
+    context.fail! if user_nil? || incorrect_token?
   end
 
   private
