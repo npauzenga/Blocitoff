@@ -34,7 +34,7 @@ RSpec.describe UpdatePassword do
       end
     end
 
-    context "when unsuccessful" do
+    context "when password confirmation does not match" do
       subject do
         described_class.call(user_params: user_params, user: user)
       end
