@@ -2,12 +2,28 @@ class CreatePasswordResetToken
   include Interactor
 
   def call
-    context.fail! unless context.user
+    validate_input
+    execute
+    validate_output
+  end
+
+  private
+
+  def validate_input
+    context.fail! if context.user.nil?
+  end
+
+  def execute
     context.user.reset_token = generate_reset_token
     update_reset_attributes(context.enc, Time.zone.now)
   end
 
-  private
+  def validate_output
+    return if context.user.valid? &&
+              context.user.reset_token &&
+              context.user.reset_digest == context.enc
+    context.fail!
+  end
 
   def generate_reset_token
     context.enc, context.raw = Encryptor.generate_token
