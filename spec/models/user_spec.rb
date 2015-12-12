@@ -15,6 +15,16 @@ RSpec.describe User do
     end
   end
 
+  context "instance variables" do
+    vars = %i(password reset_token confirm_token)
+
+    vars.each do |var|
+      it "provides an accessor for '#{var}'" do
+        expect { subjects.send(var).to_not raise_error }
+      end
+    end
+  end
+
   context "validations" do
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_confirmation_of(:password) }
