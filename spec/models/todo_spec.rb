@@ -1,17 +1,17 @@
 require "rails_helper"
 
 RSpec.describe Todo do
-  context "attributes" do
+  describe "attributes" do
     %w(description user_id).each do |attribute|
       it { is_expected.to have_attribute attribute }
     end
   end
 
-  context "validations" do
+  describe "validations" do
     it { is_expected.to validate_presence_of :description }
   end
 
-  context "methods" do
+  describe "methods" do
     let(:todo) { create(:todo) }
 
     describe "#days_left" do
@@ -22,7 +22,7 @@ RSpec.describe Todo do
     end
   end
 
-  context "relationships" do
+  describe "relationships" do
     it { is_expected.to belong_to :user }
   end
 end
