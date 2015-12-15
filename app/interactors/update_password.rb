@@ -3,17 +3,21 @@ class UpdatePassword
 
   def call
     context.fail!(errors: context.user.errors) unless password_update
+    hashed_password_update(context.user, context.user.password)
+    reset_digest_update
   end
 
   private
 
-  def password_update
-    context.user.update_attributes(context.user_params)
+  def reset_digest_update
     context.user.update_attribute(:reset_digest, nil)
-    update_hashed_password(context.user, context.user.password)
   end
 
-  def update_hashed_password(user, password)
+  def password_update
+    context.user.update(context.user_params)
+  end
+
+  def hashed_password_update(user, password)
     salt = Encryptor.generate_salt
     password_hash = Encryptor.digest_password(password, salt)
     user.update_attribute(:password_salt, salt)

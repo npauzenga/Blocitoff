@@ -22,8 +22,7 @@ group :test do
 end
 
 group :development, :test do
-  gem "faker", git:    "https://github.com/npauzenga/faker.git",
-               branch: "adding-hipster"
+  gem "faker"
   gem "pry-rails"
   gem "byebug"
   gem "pry-byebug"
@@ -35,6 +34,7 @@ group :development, :test do
   gem "rubocop"
   gem "rubocop-rspec"
   gem "factory_girl_rails", "~> 4.0"
+  gem "shoulda-matchers", "~> 3.0"
 end
 
 group :development do

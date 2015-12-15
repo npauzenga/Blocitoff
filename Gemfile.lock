@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/npauzenga/faker.git
-  revision: 9e4bcaddcc3e91c0e30a59ac19d6228d140b9874
-  branch: adding-hipster
-  specs:
-    faker (1.5.0)
-      i18n (~> 0.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -97,6 +89,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.6.1)
+      i18n (~> 0.5)
     ffi (1.9.10)
     figaro (1.0.0)
       thor (~> 0.14)
@@ -251,6 +245,8 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
+    shoulda-matchers (3.0.1)
+      activesupport (>= 4.0.0)
     simplecov (0.10.0)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -304,7 +300,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   coveralls
   factory_girl_rails (~> 4.0)
-  faker!
+  faker
   figaro (= 1.0)
   guard
   guard-rspec
@@ -324,6 +320,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  shoulda-matchers (~> 3.0)
   simplecov
   spring
   sqlite3
