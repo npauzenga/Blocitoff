@@ -1,40 +1,37 @@
-class TodosController < ApplicationController
-  def new
-  end
-
+class TodosController < AuthenticatedController
   def create
-    @user = User.find_by(params[:user_id])
-    @todo = @user.todos.new(todo_params)
+    result = CreateTodo.call(user:        current_user,
+                             todo_params: todo_params)
 
-    if @todo.save
-      redirect_to @user, notice: "Your new TODO was saved"
+    if result.success?
+      redirect_to result.user
+      flash[:notice] = "Your new TODO was saved"
     else
+      redirect_to result.user
       flash[:error] = "Your TODO was not saved"
-      redirect_to @user
     end
   end
 
-  def show
-    @todo = Todo.find(params[:id])
-  end
-
   def destroy
-    @todo = Todo.find(params[:id])
-    @user = @todo.user
-
-    if @todo.destroy
+    destroyed = DestroyTodo.call(todo_id: params[:id])
+    @todo = destroyed.todo
+    if destroyed.success?
       flash[:notice] = "Todo completed!"
     else
       flash[:error] = "There was a problem"
     end
 
-    respond_to do |format|
-      format.html { redirect_to @user }
-      format.js
-    end
+    response_type
   end
 
   private
+
+  def response_type
+    respond_to do |format|
+      format.html { redirect_to @todo.user }
+      format.js
+    end
+  end
 
   def todo_params
     params.require(:todo).permit(:description)

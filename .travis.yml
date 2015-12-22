@@ -18,3 +18,4 @@ deploy:
   app:
     master: blocitoff-nate
     staging: blocitoff-nate-staging
+  run: "rake db:migrate"

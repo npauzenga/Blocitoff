@@ -1,24 +1,24 @@
-class UsersController < ApplicationController
+class UsersController < AuthenticatedController
+  skip_before_action :log_in_required, only: %i(new create)
+
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      UserMailer.registration_confirmation(@user).deliver_now
+    result = CreateUser.call(user_params: user_params)
+
+    if result.success?
       flash[:notice] = "Thanks! Please check your email to complete sign up"
       redirect_to sign_in_path
     else
       flash[:error] = "Uh oh. Something went wrong."
-      render "new"
+      redirect_to sign_up_path
     end
   end
 
   def show
-    @user = User.find_by(params[:id])
-    @todos = @user.todos
-    @todo = Todo.new
+    @user = ShowUser.call(id: params[:id], current_id: session[:user_id]).user
   end
 
   private

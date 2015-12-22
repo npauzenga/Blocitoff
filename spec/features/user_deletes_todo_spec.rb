@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "User deletes todo" do
-  let(:user) { create(:user, email_confirmed: true) }
+  let(:user) { create(:confirmed_user) }
 
   scenario "Successfully" do
     visit root_path

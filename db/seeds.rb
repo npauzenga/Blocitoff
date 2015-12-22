@@ -28,7 +28,6 @@ admin = User.create(
   email_confirmed: true
 )
 
-
 50.times do
   Todo.create!(
     description: Faker::Hipster.sentence,
