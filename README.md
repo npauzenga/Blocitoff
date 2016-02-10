@@ -19,7 +19,7 @@ Blocitoff was created as part of the [Bloc](http://bloc.io) curriculum. It was a
 ### An example user story
 >As a user, I want to sign up for a free account by providing a user name, password and email
 
-This particular project focuses on back-end techniques. The Boostrap UI/UX design is just enough to be functional and support the underlying functionality.
+This particular project focuses on back-end techniques. The Boostrap UI/UX design is just enough to support the underlying functionality.
 
 ---
 
