@@ -3,7 +3,7 @@ require "rails_helper"
 feature "User signs up" do
   scenario "Successfully"do
     visit root_path
-    within ".nav" do
+    within ".navbar" do
       click_link "Sign Up"
     end
     fill_in "Name", with: "Ted Danson"

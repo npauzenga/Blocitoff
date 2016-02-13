@@ -5,7 +5,7 @@ feature "User deletes todo" do
 
   scenario "Successfully" do
     visit root_path
-    within ".nav" do
+    within ".navbar" do
       click_link "Sign In"
     end
     fill_in "Email", with: user.email
