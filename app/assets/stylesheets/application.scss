@@ -17,8 +17,15 @@
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900|Open+Sans:600);
 
-@media (min-width: 640px) {}
-@media (min-width: 1024px) {}
+@media screen and (max-width: 640px) {
+  body .navbar {
+    display: none;
+  }
+
+  body .welcome {
+    padding-top: 0;
+  }
+}
 
 body {
   background-image: image-url("bg.jpg");
