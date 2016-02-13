@@ -10,8 +10,44 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require normalize-rails
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+
+@media (min-width: 640px) {}
+@media (min-width: 1024px) {}
+
+.navbar {
+  position: relative;
+  padding: 0.5rem;
+}
+
+.navbar .logo {
+  position: relative;
+  left: 3rem;
+}
+
+.navbar .links-container {
+  display: table;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  height: 80px;
+}
+
+.links-container .navbar-link {
+  display: table-cell;
+  position: relative;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  height: 100%;
+  text-transform: lowercase;
+  vertical-align: middle;
+}
+
+.navbar-link a {
+  text-decoration: none;
+  color: #14d8b2;
+}
