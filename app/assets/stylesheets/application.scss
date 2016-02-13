@@ -36,13 +36,17 @@ body {
   left: 3rem;
 }
 
+.navbar img {
+  max-width: 200px;
+}
+
 .navbar .links-container {
   display: table;
   position: absolute;
   top: 0;
   right: 0;
   margin: 0;
-  height: 80px;
+  height: 61px;
 }
 
 .links-container .navbar-link {
@@ -58,4 +62,21 @@ body {
 .navbar-link a {
   text-decoration: none;
   color: #14d8b2;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+.footer .credits {
+  margin-bottom: 1rem;
+}
+
+.footer .by-line {
+  margin-bottom: 0.3rem;
 }
