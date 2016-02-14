@@ -1,13 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-# Generate users
-
 10.times do
   password = Faker::Lorem.characters(10)
   user = User.create(
@@ -18,15 +8,21 @@
     email_confirmed: true
   )
 end
-users = User.all
 
-admin = User.create(
+password = "helloworld"
+password_salt = Encryptor.generate_salt
+
+User.create(
   name: "Admin",
   email: "admin@admin.com",
-  password: "helloworld",
-  password_confirmation: "helloworld",
+  password: password,
+  password_confirmation: password,
+  password_salt: password_salt,
+  password_hash: Encryptor.digest_password(password, password_salt),
   email_confirmed: true
 )
+
+users = User.all
 
 50.times do
   Todo.create!(

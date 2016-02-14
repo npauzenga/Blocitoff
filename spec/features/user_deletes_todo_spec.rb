@@ -5,7 +5,7 @@ feature "User deletes todo" do
 
   scenario "Successfully" do
     visit root_path
-    within ".nav" do
+    within ".navbar" do
       click_link "Sign In"
     end
     fill_in "Email", with: user.email
@@ -14,9 +14,9 @@ feature "User deletes todo" do
     within "form" do
       click_button "Sign In"
     end
-    fill_in "Description", with: "Meet up with the team"
+    fill_in "Create Todo", with: "Meet up with the team"
     click_button "Save"
-    click_link ""
+    page.find(".todo-checkbox").click
 
     expect(page).not_to have_content("Meetup with the team")
   end

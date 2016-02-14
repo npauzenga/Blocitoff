@@ -1,5 +1,5 @@
-class WelcomeController < AuthenticatedController
+class WelcomeController < ApplicationController
   def index
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user) if current_user
   end
 end

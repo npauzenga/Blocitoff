@@ -10,8 +10,12 @@ RSpec.describe TodosController, type: :controller do
   end
 
   describe "POST #create" do
-    let(:todo)             { build(:todo) }
-    let(:context)          { double(:context, success?: true, user: user) }
+    let(:todo) { create(:todo, user_id: user.id) }
+
+    let(:context) do
+      double(:context, success?: true, user: user, todo: todo)
+    end
+
     let(:todo_params)      { { description: todo.description } }
     let(:interactor_input) { { user: current_user, todo_params: todo_params } }
     let(:params)           { { todo: todo_params, user_id: user.id } }

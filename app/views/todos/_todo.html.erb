@@ -1,9 +1,9 @@
-<%= content_tag :div, class: "media", id: "todo-#{todo.id}" do %>
-  <div class="todos">
-    <%= link_to "", todo, method: :delete,
-                          remote: true,
-                          class:  "glyphicon glyphicon-ok" %>
+<%= content_tag :div, class: "todo-container clearfix", id: "todo-#{todo.id}" do %>
+  <%= link_to "", todo, method: :delete, remote: true, class: "todo-checkbox" %>
+  <div class="todo-description">
     <%= todo.description %>
+  </div>
+  <div class="todo-days-left">
     (<%= todo.days_left %> days left)
   </div>
 <% end %>

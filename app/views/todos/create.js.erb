@@ -1,0 +1,6 @@
+<% if @todo.valid? %>
+  $('.todos-list').prepend("<%= escape_javascript(render(@todo)) %>");
+  $('.todo-form').html("<%= escape_javascript(render partial: 'form', locals: { user: @user, todo: @user.todos.new }) %>");
+<% else %>
+  $('.todo-form').html("<%= escape_javascript(render partial: 'form', locals: { user: @user, todo: @user.todos.new }) %>");
+<% end %>
