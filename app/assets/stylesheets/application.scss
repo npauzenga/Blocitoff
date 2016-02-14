@@ -18,12 +18,20 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900|Open+Sans:600);
 
 @media screen and (max-width: 640px) {
+  body .content .hero .sign_in_btn {
+    display: block;
+  }
+
+  body .content .hero h1 {
+    padding-top: 0;
+  }
+
   body .navbar {
     display: none;
   }
 
-  body .welcome {
-    padding-top: 0;
+  body .content p {
+    font-size: 90%;
   }
 }
 
@@ -86,4 +94,61 @@ body {
 
 .footer .by-line {
   margin-bottom: 0.3rem;
+}
+
+.content {
+  color: white;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+}
+
+.content .hero h1 {
+  padding-top: 5rem;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+
+.hero p {
+  font-size: 1.5rem;
+}
+
+.content button {
+  background-color: #9b59b6;
+  margin-top: 1rem;
+  padding: 15px 32px;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button {
+  background-color: #9b59b6;
+  margin-top: 1rem;
+  padding: 15px 32px;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form-group input {
+  border: 1px solid #cec8bd;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: .5rem;
+  text-align: center;
+  color: black;
+  font-family: "Open Sans", sans-serif;
+}
+
+.content .form-group {
+  padding-top: 1rem;
+}
+
+.form-group .button {
+  color: white;
+  padding: 15px 32px;
+  border: none;
 }
