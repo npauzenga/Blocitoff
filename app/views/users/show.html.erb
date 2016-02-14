@@ -1,7 +1,6 @@
-<div class="container">
-  <h1><%= @user.name %></h1>
-  <h3><%= @user.email %></h3>
-  <p>Test subject since <%= @user.created_at.strftime("%B %d, %Y") %></p>
-  <%= render @user.todos %>
+<section class="content">
+  <section class="todos-list">
+    <%= render @user.todos %>
+  </section>
   <%= render partial: "todos/form", locals: { user: @user, todo: @user.todos.new } %>
-</div>
+</section>

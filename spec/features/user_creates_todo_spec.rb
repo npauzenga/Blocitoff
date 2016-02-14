@@ -14,7 +14,7 @@ feature "User creates a todo" do
     within "form" do
       click_button "Sign In"
     end
-    fill_in "Description", with: "Meet up with the team"
+    fill_in "Create Todo", with: "Meet up with the team"
     click_button "Save"
     expect(page).to have_content("Meet up with the team")
   end

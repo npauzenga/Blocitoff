@@ -17,6 +17,10 @@
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900|Open+Sans:600);
 
+/****
+  breakpoints
+****/
+
 @media screen and (max-width: 640px) {
   body .content .hero .sign_in_btn {
     display: block;
@@ -35,9 +39,30 @@
   }
 }
 
+/****
+  general state and body
+****/
+
 body {
   background-image: image-url("bg.jpg");
 }
+
+.hidden {
+  display: none;
+}
+
+.button {
+  background-color: #9b59b6;
+  margin-top: 1rem;
+  padding: 15px 32px;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+/****
+  navbar
+****/
 
 .navbar {
   position: relative;
@@ -79,6 +104,10 @@ body {
   color: #14d8b2;
 }
 
+/****
+  footer
+****/
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -95,6 +124,10 @@ body {
 .footer .by-line {
   margin-bottom: 0.3rem;
 }
+
+/****
+  content
+****/
 
 .content {
   color: white;
@@ -123,15 +156,9 @@ body {
   cursor: pointer;
 }
 
-.button {
-  background-color: #9b59b6;
-  margin-top: 1rem;
-  padding: 15px 32px;
-  text-align: center;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-}
+/****
+  forms
+****/
 
 .form-group input {
   border: 1px solid #cec8bd;
@@ -151,4 +178,24 @@ body {
   color: white;
   padding: 15px 32px;
   border: none;
+}
+
+/****
+  alerts
+****/
+
+.alert {
+  background-color: #9b59b6;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+}
+
+.alert button {
+  float: right;
 }

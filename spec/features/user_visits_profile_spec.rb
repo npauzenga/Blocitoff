@@ -18,6 +18,6 @@ feature "User visits profile" do
 
   scenario "Visiting root redirects to profile" do
     visit root_path
-    expect(page).to have_content(user.name)
+    expect(page).to have_css(".todo-form")
   end
 end

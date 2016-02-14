@@ -8,3 +8,82 @@
   padding-right: 1rem;
   color: #9b59b6;
 }
+
+/******
+  Todos
+******/
+
+.clearfix:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.todos-list {
+  padding-top: 5rem;
+}
+
+.todos-list .todo-container {
+  display: table;
+  border: solid 2px white;
+  border-radius: 4px;
+  box-shadow: 2px 2px;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  background-color: white;
+  color: #989898;
+}
+
+.todo-container .todo-description {
+  display: table-cell;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.todo-container .todo-days-left {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+}
+
+.todo-container .todo-checkbox {
+  display: table-cell;
+  box-sizing: border-box;
+  border: 2px solid #989898;
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.todo-container .todo-checkbox:hover {
+  background-color: #9b59b6;
+  opacity: 0.5;
+}
+
+.todo-container .todo-checkbox:active {
+  background-color: #9b59b6;
+  opacity: 1;
+}
+
+.todo-form .new_todo {
+  padding: 2rem;
+}
+
+.new_todo input {
+  width: 50%;
+  padding: 0.5rem;
+  color: #989898;
+  border: solid 2px white;
+  border-radius: 4px;
+  box-shadow: 2px 2px;
+  box-sizing: border-box;
+  text-align: center;
+}

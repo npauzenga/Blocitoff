@@ -2,19 +2,22 @@ class TodosController < AuthenticatedController
   def create
     result = CreateTodo.call(user:        current_user,
                              todo_params: todo_params)
+    @todo = result.todo
+    @user = result.user
 
     if result.success?
-      redirect_to result.user
-      flash[:notice] = "Your new TODO was saved"
+      flash[:notice] = "Todo created!"
     else
-      redirect_to result.user
       flash[:error] = "Your TODO was not saved"
     end
+
+    response_type
   end
 
   def destroy
     destroyed = DestroyTodo.call(todo_id: params[:id])
     @todo = destroyed.todo
+
     if destroyed.success?
       flash[:notice] = "Todo completed!"
     else
