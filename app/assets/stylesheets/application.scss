@@ -10,8 +10,192 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require normalize-rails
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900|Open+Sans:600);
+
+/****
+  breakpoints
+****/
+
+@media screen and (max-width: 640px) {
+  body .content .hero .sign_in_btn {
+    display: block;
+  }
+
+  body .content .hero h1 {
+    padding-top: 0;
+  }
+
+  body .navbar {
+    display: none;
+  }
+
+  body .content p {
+    font-size: 90%;
+  }
+}
+
+/****
+  general state and body
+****/
+
+body {
+  background-image: image-url("bg.jpg");
+}
+
+.hidden {
+  display: none;
+}
+
+.button {
+  background-color: #9b59b6;
+  margin-top: 1rem;
+  padding: 15px 32px;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+/****
+  navbar
+****/
+
+.navbar {
+  position: relative;
+  padding: 0.5rem;
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navbar .logo {
+  position: relative;
+  left: 3rem;
+}
+
+.navbar img {
+  max-width: 200px;
+}
+
+.navbar .links-container {
+  display: table;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  height: 61px;
+}
+
+.links-container .navbar-link {
+  display: table-cell;
+  position: relative;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  height: 100%;
+  text-transform: lowercase;
+  vertical-align: middle;
+}
+
+.navbar-link a {
+  text-decoration: none;
+  color: #14d8b2;
+}
+
+/****
+  footer
+****/
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+.footer .credits {
+  margin-bottom: 1rem;
+}
+
+.footer .by-line {
+  margin-bottom: 0.3rem;
+}
+
+/****
+  content
+****/
+
+.content {
+  color: white;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+}
+
+.content .hero h1 {
+  padding-top: 5rem;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+
+.hero p {
+  font-size: 1.5rem;
+}
+
+.content button {
+  background-color: #9b59b6;
+  margin-top: 1rem;
+  padding: 15px 32px;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/****
+  forms
+****/
+
+.form-group input {
+  border: 1px solid #cec8bd;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: .5rem;
+  text-align: center;
+  color: black;
+  font-family: "Open Sans", sans-serif;
+}
+
+.content .form-group {
+  padding-top: 1rem;
+}
+
+.form-group .button {
+  color: white;
+  padding: 15px 32px;
+  border: none;
+}
+
+/****
+  alerts
+****/
+
+.alert {
+  background-color: #9b59b6;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+}
+
+.alert button {
+  float: right;
+}

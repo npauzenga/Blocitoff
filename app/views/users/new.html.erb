@@ -1,35 +1,36 @@
-<div class="container">
+<section class="content">
+  <section class="hero">
   <h1>Sign Up</h1>
-
-  <%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-      <div class="error_messages">
-        <h2>Something isn't right</h2>
-        <ul>
-          <% for message in @user.errors.full_messages %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+    <%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+        <div class="error_messages">
+          <h2>Something isn't right</h2>
+          <ul>
+            <% for message in @user.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
       </div>
-    <% end %>
-    <div class="form-group">
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
-    </div>
-    <div class="form-group">
-      <%= f.label :email %><br>
-      <%= f.text_field :email %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password %><br>
-      <%= f.password_field :password %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password_confirmation, "Confirmation" %><br>
-      <%= f.password_field :password_confirmation %>
-    </div>
-    <div class="form-group">
-      <%= f.submit "Sign Up!", class: "btn btn-success" %>
-    </div>
+      <div class="form-group">
+        <%= f.label :email %><br>
+        <%= f.text_field :email %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirmation" %><br>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Sign Up!", class: "button" %>
+      </div>
   <% end %>
-</div>
+  </section>
+</section>

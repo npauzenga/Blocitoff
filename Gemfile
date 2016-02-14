@@ -10,11 +10,11 @@ gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "figaro", "1.0"
 gem "puma"
-gem "bootstrap-sass"
 gem "bcrypt"
 gem "responders", "~>2.0"
 gem "whenever"
 gem "interactor"
+gem "normalize-rails"
 
 group :test do
   gem "coveralls"

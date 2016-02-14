@@ -1,20 +1,5 @@
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  background-color: rgb(238, 238, 238);
-}
-
-.container .text-muted {
-  margin: 20px 0;
-}
-
-.text-muted {
-  color: rgb(240, 240, 240);
-}
-
-body > .container {
-  padding: 100px;
-  text-align: center;
+.content .hero .sign_in_btn {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
 }

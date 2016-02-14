@@ -5,7 +5,7 @@ feature "User visits profile" do
 
   before do
     visit root_path
-    within ".nav" do
+    within ".navbar" do
       click_link "Sign In"
     end
     fill_in "Email", with: user.email
@@ -18,6 +18,6 @@ feature "User visits profile" do
 
   scenario "Visiting root redirects to profile" do
     visit root_path
-    expect(page).to have_content(user.name)
+    expect(page).to have_css(".todo-form")
   end
 end

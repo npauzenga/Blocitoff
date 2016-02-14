@@ -2,7 +2,11 @@
   <div class="error"><%= flash[:error] %></div>
 <% end %>
 
-<%= form_for [user, todo] do |form| %>
-  <%= form.text_field :description, placeholder: "Description" %>
-  <%= form.submit "Save" %>
-<% end %>
+<div class="todo-form">
+  <%= form_for [user, todo], remote: true do |form| %>
+      <%= form.text_field :description, placeholder: "Create Todo" %>
+    <div class="hidden">
+      <%= form.submit "Save" %>
+    </div>
+  <% end %>
+</div>
